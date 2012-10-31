@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "description": "restful chat client and server",
   "main": "main.js",
+  "bin" : {
+	 "chatt-server": "./server.js",
+	 "chatt-client": "./client.js" 
+  },
   "scripts": {
     "test": "test.js",
     "start": "node server.js"
