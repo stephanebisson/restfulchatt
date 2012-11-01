@@ -19,7 +19,7 @@ app.get('/', function(req, res){
 });
 
 app.get('/view', function(req, res){
-    res.sendfile('viewMessages.html');
+    res.sendfile('public/viewMessages.html');
 });
 
 app.get('/public/:file', function(req, res){
