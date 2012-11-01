@@ -9,6 +9,7 @@ angular.module('chatt', [])
     })
     .controller('MessagesController', function($scope, messageSocket, $http){
         $scope.messages = [];
+        
         messageSocket.onNewMessage(function(msg){
             $scope.$apply(function(){
                 $scope.messages.push(msg);
