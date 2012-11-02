@@ -18,6 +18,15 @@ app.get('/', function(req, res){
     res.status(200).send(messages);
 });
 
+app.post('/', function(req, res){
+    var newMessage = req.body;
+    
+    console.log(newMessage.name, ' : ', newMessage.message);
+    messages.push(newMessage);
+    io.sockets.emit('newMessage', newMessage);
+    res.send(200);
+});
+
 app.get('/view', function(req, res){
     res.sendfile('public/viewMessages.html');
 });
@@ -26,12 +35,7 @@ app.get('/public/:file', function(req, res){
     res.sendfile('./public/' + req.params.file);
 });
 
-app.post('/', function(req, res){
-    console.log(req.body.name, ' : ', req.body.message);
-    messages.push(req.body);
-    io.sockets.emit('newMessage', req.body);
-    res.send(200);
-});
+
 
 io.sockets.on('connection', function (socket) {
     socket.emit('newMessage', initialMessage);
